@@ -1,0 +1,171 @@
+﻿@model KurumsalWeb.Models.Entity.Blog
+@{
+    ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Blog Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Blog</h2>
+
+                <ol>
+                    <li><a href="/Home/Index">Ana Sayfa</a></li>
+                    <li><a href="/Home/Blog">Blog</a></li>
+                    <li>@Model.Baslik</li>
+                </ol>
+            </div>
+
+        </div>
+
+    </section><!-- End Blog Section -->
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+
+                    <article class="entry entry-single">
+
+                        <div class="entry-img">
+                            <img src="@Model.ResimUrl" alt="@Model.ResimUrl" class="img-fluid">
+                        </div>
+
+                        <h2 class="entry-title">
+                            <a href="blog-single.html">@Model.Baslik</a>
+                        </h2>
+
+
+
+                        <div class="entry-content">
+                            <p>
+                                @Html.Raw(Model.Icerik)
+                            </p>
+
+
+
+                        </div>
+
+
+
+                    </article><!-- End blog entry -->
+
+                    <div class="blog-author d-flex align-items-center">
+                        <img src="/Content/Site/assets/img/blog/blog-author.jpg" class="rounded-circle float-left" alt="">
+                        <div>
+                            <h4>Yazar Adı</h4>
+                            <div class="social-links">
+                                <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
+                                <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                                <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                            </div>
+                            <p>
+                                Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                            </p>
+                        </div>
+                    </div><!-- End blog author bio -->
+
+                    <div class="blog-comments">
+
+                   
+                        <h4 class="comments-count">  Yorumlar</h4>
+
+
+                        @foreach (var item in Model.Yorum.OrderByDescending(x => x.YorumID).Where(x => x.Onay == true))
+                        {
+
+                            <div id="comment-3" class="comment">
+                                <div class="d-flex">
+                                    <div class="comment-img"><img src="https://forum.truckersmp.com/uploads/monthly_2019_09/imported-photo-180400.thumb.png.2a750ecf31074e6763779f238f95802f.png" alt=""></div>
+                                    <div>
+                                        <h5><a href="#">@item.AdSoyad</a> </h5>
+                                        <time datetime="2020-01-01">@DateTime.Now.Year</time>
+                                        <p>
+                                            @item.Icerik
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div><!-- End comment #3 -->
+                            <br />
+                            <hr />
+                        }
+
+
+
+
+
+                        <div class="reply-form">
+                            <h4>Yorum Yap</h4>
+                            <p>
+                                E-posta hesabınız yayımlanmayacak. *
+                            </p>
+                            <form method="post">
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <input name="adsoyad" id="adsoyad" type="text" class="form-control" placeholder="Adınız*">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <input name="email" id="email" type="text" class="form-control" placeholder="Mail Adresiniz*">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col form-group">
+                                        <textarea name="mesaj" id="mesaj" class="form-control" placeholder="Mesajınız*"></textarea>
+                                    </div>
+                                </div>
+                                <button type="submit" id="gonder" class="btn btn-primary">Gönder</button>
+
+                            </form>
+
+                        </div>
+
+                    </div><!-- End blog comments -->
+
+                </div><!-- End blog entries list -->
+
+                @{
+                    Html.RenderAction("BlogKategoriPartial", "Home");
+                }
+
+            </div>
+
+        </div>
+    </section><!-- End Blog Single Section -->
+
+</main><!-- End #main -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#gonder").click(function () {
+
+            var adisoyadi = $("#adsoyad").val();
+            var epostasi = $("#email").val();
+            var yorumunuz = $("#mesaj").val();
+
+            $.ajax({
+                url:'/Home/YorumYap',
+                data: { adsoyad: adisoyadi, email: epostasi, mesaj: yorumunuz, BlogID:@Model.BlogID },
+                type: 'POST',
+                dataType: 'JSON',
+                success: function (data) {
+                    alert("Yorumunuz Gönderildi. Onay verildikten sonra yayınlanacaktır.");
+                }
+
+            })
+        });
+
+    });
+
+
+</script>

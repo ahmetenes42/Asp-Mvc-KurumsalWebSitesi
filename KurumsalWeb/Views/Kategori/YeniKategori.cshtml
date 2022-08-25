@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "YeniKategori";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 style="margin-bottom:20px;" align="center">Yeni Kategori</h1>
+<script type="text/javascript">
+    CKEDITOR.replace('editor')
+</script>
+@using (Html.BeginForm("YeniKategori", "Kategori", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- General Form Elements -->
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Başlık</label>
+        <div class="col-sm-10">
+            <input type="text" name="KategoriAd" placeholder="Kategori Adını Giriniz" required class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Açıklama</label>
+        <div class="col-sm-10">
+            <textarea name="KategoriAciklama" placeholder="Kategori Açıklamasını giriniz" class="ckeditor"></textarea>
+        </div>
+    </div>
+
+
+
+    <button style="margin-top:25px; width:100px;" type="submit" class="btn btn-success ">Ekle</button>
+}
+
+
+
+
+

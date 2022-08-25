@@ -1,0 +1,62 @@
+﻿@model KurumsalWeb.Models.Entity.Yorum
+@{
+    ViewBag.Title = "YorumEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 style="margin-bottom:20px;" align="center">Yorum Güncelle</h1>
+
+@using (Html.BeginForm("YorumEdit", "BlogYorum", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- General Form Elements -->
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">AdSoyad</label>
+        <div class="col-sm-10">
+            <input type="text" name="AdSoyad" disabled value="@Model.AdSoyad" class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Eposta</label>
+        <div class="col-sm-10">
+            <input type="text" name="Eposta" disabled value="@Model.Eposta" class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Yorum</label>
+        <div class="col-sm-10">
+            <input type="text" name="Icerik" value="@Model.Icerik" class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Blog Adı</label>
+        <div class="col-sm-10">
+            <input type="text" name="Icerik" disabled value="@Model.Blog.Baslik" class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Yorum Onay</label>
+        <div class="col-sm-10">
+          
+           @Html.EditorFor(Model => Model.Onay, new {@class= "form-control" })
+        
+        </div>
+    </div>
+   
+
+    <button style="margin-top:25px; width:100px;" type="submit" class="btn btn-success ">Güncelle</button>
+}
+
+
+
+
+
+
+
+

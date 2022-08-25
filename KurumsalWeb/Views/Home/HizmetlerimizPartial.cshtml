@@ -1,0 +1,23 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Hizmet>
+
+<div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+    @foreach (var hizmet2 in Model)
+    {
+        <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
+            <div class="portfolio-item">
+                <img style="width:460px;height:300px;" src="@hizmet2.ResimUrl" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                    <h3>@hizmet2.Baslik</h3>
+                    <div>
+                        <a href="@hizmet2.ResimUrl" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@hizmet2.Aciklama"><i class="bx bx-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+</div>

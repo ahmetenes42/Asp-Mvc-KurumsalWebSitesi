@@ -1,0 +1,73 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Hakkimizda>
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Hakkımızda</h2>
+                <ol>
+                    <li><a href="/Home/Index">Ana Sayfa</a></li>
+                    <li>Hakkımızda</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End About Us Section -->
+    <!-- ======= About Section ======= -->
+    <section class="about" data-aos="fade-up">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="https://omid.com.tr/upload/about/omid-hakkimizda-1.jpg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h3>Biz Kimiz</h3>
+
+                    @foreach (var h in Model)
+                    {
+
+                        <p>
+                          @Html.Raw( h.Aciklama)
+                        </p>
+                    }
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+    <!-- ======= Facts Section ======= -->
+    <section class="facts section-bg" data-aos="fade-up">
+        <div class="container">
+
+            <div class="row counters">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Geliştirdiğimiz Proje Sayısı</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Çalışan Sayısı</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>Destek Saatleri</p>
+                </div>
+
+                
+            </div>
+
+        </div>
+    </section><!-- End Facts Section -->
+
+</main><!-- End #main -->

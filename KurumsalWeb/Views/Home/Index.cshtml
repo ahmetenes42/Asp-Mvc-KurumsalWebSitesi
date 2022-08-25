@@ -1,0 +1,55 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Slider>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+<section id="hero" class="d-flex justify-cntent-center align-items-center">
+  
+       
+            @Html.Partial("SliderPartial", Model);
+        
+</section><!-- End Hero -->
+<section class="services">
+    <div class="container">
+
+        <div class="row">
+            @{
+                Html.RenderAction("ServisPartial", "Home");
+            }
+        </div>
+
+    </div>
+</section><!-- End Services Section -->
+<!-- ======= Why Us Section ======= -->
+<section class="why-us section-bg" id="Hakkimizda" data-aos="fade-up" date-aos-delay="200">
+    <h1 align="center">Hakkımızda</h1>
+    <br />
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 video-box">
+                <img src="https://istanbulbogazicienstitu.com/view/images/blog/onecikan/kurumsal-iletisim-depatmani-nedir.jpg" class="img-fluid" alt="">
+            </div>
+
+            <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+
+                @{
+                    Html.RenderAction("HakkimizdaPartial", "Home");
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+</section><!-- End Why Us Section -->
+<section id="hizmet" class="portfolio">
+    <h1 align="center"> Hizmetlerimiz</h1>
+    <br />
+    <div class="container">
+        @{
+            Html.RenderAction("HizmetlerimizPartial", "Home");
+
+        }
+    </div>
+</section><!-- End Portfolio Section -->

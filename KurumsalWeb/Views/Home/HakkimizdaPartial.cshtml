@@ -1,0 +1,11 @@
+﻿
+@model IEnumerable<KurumsalWeb.Models.Entity.Hakkimizda>
+
+<div class="icon-box">
+    @foreach (var hakkimizda in Model)
+    {
+        <p class="description">@Html.Raw(hakkimizda.Aciklama)</p>
+    }
+
+
+</div>

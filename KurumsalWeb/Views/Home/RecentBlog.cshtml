@@ -1,0 +1,18 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Blog>
+
+
+<h3 class="sidebar-title">En Çok Okunan Bloglar</h3>
+<div class="sidebar-item recent-posts">
+    @foreach (var recent in Model)
+    {
+        <div class="post-item clearfix">
+            <img src="@recent.ResimUrl" alt="">
+            <h4><a href="/Home/BlogDetay/@recent.BlogID">@recent.Baslik</a></h4>
+            <time datetime="2020-01-01">@DateTime.Now.Year</time>
+        </div>
+
+    }
+
+
+
+</div><!-- End sidebar recent posts-->

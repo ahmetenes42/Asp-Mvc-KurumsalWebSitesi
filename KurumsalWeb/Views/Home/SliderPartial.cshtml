@@ -1,0 +1,29 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Slider>
+@{ 
+    int t = 0;
+}
+<div id="heroCarousel" class="container carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+    @foreach (var slider in Model)
+    {
+        <!-- Slide 1 -->
+        <div class="carousel-item @(t==0 ? "active":"")">
+            <div class="carousel-container">
+                <h2 class="animate__animated animate__fadeInDown">@slider.SliderBaslik</h2>
+                <p class="animate__animated animate__fadeInUp">@Html.Raw(slider.SliderAciklama)</p>
+
+            </div>
+
+        </div>
+        t++;
+    }
+
+    <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+    </a>
+
+    <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+    </a>
+</div>
+

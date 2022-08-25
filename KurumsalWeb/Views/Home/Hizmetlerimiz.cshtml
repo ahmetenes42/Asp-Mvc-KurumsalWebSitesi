@@ -1,0 +1,53 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Hizmet>
+@{
+    ViewBag.Title = "Hizmetlerimiz";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Projelerimiz</h2>
+                <ol>
+                    <li><a href="/Home/Index">Ana Sayfa</a></li>
+                    <li>Projeler</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Our Portfolio Section -->
+    <!-- ======= Portfolio Section ======= -->
+    <section class="portfolio">
+        <div class="container">
+            <div class="row">
+                @foreach (var proje in Model)
+                {
+                    <div class="col-lg-4 col-md-6 portfolio-wrap filter-app">
+                        <div class="portfolio-item">
+                            <img style="width:460px;height:300px;" src="@proje.ResimUrl" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h3>@proje.Baslik</h3>
+                                <div>
+                                    <a href="@proje.ResimUrl" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@proje.Aciklama"><i class="bx bx-plus"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+
+
+
+        </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+
+    </main><!-- End #main -->

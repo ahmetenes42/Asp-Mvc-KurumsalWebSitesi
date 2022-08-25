@@ -1,0 +1,70 @@
+﻿@using KurumsalWeb.Models.Entity
+@model List<Kategori>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 style="margin-bottom:20px;" align="center">Kategori Sayfası</h1>
+@*<a href="/Kategori/YeniKategori" class="btn btn-outline-primary " style="max-width:12%; margin-bottom:25px;">Yeni Kategori Ekle</a>*@
+<button style="max-width:12%; margin-bottom:25px;" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#Modal1">
+    Yeni Kategori
+</button>
+
+
+<!-- The Modal -->
+<div class="modal" id="Modal1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Yeni Kategori Oluştur</h2>
+            </div>
+            <form method="post" action="/Kategori/YeniKategori">
+                <div class="modal-body">
+                    <label> Kategori Adı</label>
+                    <input type="text" name="KategoriAd" placeholder="Kategori Adını Giriniz" required class="form-control">
+                    <br />
+                    <label> Kategori Açıklama</label>
+                    <textarea name="KategoriAciklama" placeholder="Kategori Açıklamasını giriniz" class="ckeditor"></textarea>
+                    <br />
+                    <button type="submit" class="btn btn-success">Kaydet</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- Table with stripped rows -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Başlık</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">Sil</th>
+            <th scope="col">Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kategori in Model)
+        {
+            <tr>
+                <th>@kategori.KategoriID</th>
+                <td>@kategori.KategoriAd</td>
+                <td>@Html.Raw(kategori.KategoriAciklama)</td>
+                <td><a href="/Kategori/KategoriSil/@kategori.KategoriID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Kategori/KategoriEdit/@kategori.KategoriID" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+
+
+
+    </tbody>
+</table>
+<!-- End Table with stripped rows -->

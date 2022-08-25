@@ -1,0 +1,66 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Slider>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 style="margin-bottom:20px;" align="center">Slider Listesi</h1>
+@*<a href="/Slider/YeniSlider" class="btn btn-outline-primary " style="max-width:12%; margin-bottom:25px;">Yeni Slider Ekle</a>*@
+
+
+    <button style="max-width:12%; margin-bottom:25px;" type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#Modal1">
+         Yeni Slider
+    </button>
+
+
+<!-- The Modal -->
+    <div class="modal" id="Modal1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Yeni Slider Oluştur</h2>
+                </div>
+                <form method="post" action="/Slider/YeniSlider">
+                    <div class="modal-body">
+                        <label> Başlık</label>
+                        <input type="text" name="SliderBaslik" required placeholder="Slider Başlığı Giriniz" class="form-control">
+                        <br />
+                        <label> Açıklama</label>
+                        <textarea name="SliderAciklama" class="ckeditor" ></textarea>
+                        <br />
+                        <button type="submit" class="btn btn-success">Kaydet</button>
+                        <button  type="button" class="btn btn-danger" data-bs-dismiss="modal">Vazgeç</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- Table with hoverable rows -->
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Başlık</th>
+            <th scope="col">Açıklama</th>
+            <th scope="col">Sil</th>
+            <th scope="col">Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var slider in Model)
+        {
+            <tr>
+                <th>@slider.SliderID</th>
+                <td>@slider.SliderBaslik</td>
+                <td>@Html.Raw(slider.SliderAciklama)</td>
+
+                <td><a href="/Slider/SliderSil/@slider.SliderID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Slider/SliderGuncelle/@slider.SliderID" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+

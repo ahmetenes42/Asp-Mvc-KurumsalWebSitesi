@@ -1,0 +1,42 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Admin>
+@{
+    ViewBag.Title = "AdminPro";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1 style="margin-bottom:20px;" align="center">Admin Listesi</h1>
+<a href="/Admin/YeniAdmin" class="btn btn-outline-primary " style="max-width:12%; margin-bottom:25px;">Yeni Admin Ekle</a>
+
+<!-- Table with hoverable rows -->
+<table id="myTable" class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">E-Posta</th>
+            <th scope="col">Şifre</th>
+            <th scope="col">Yetki</th>
+            <th scope="col">Sil</th>
+            <th scope="col">Düzenle</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var admin in Model)
+        {
+            <tr>
+                <th>@admin.AdminID</th>
+                <td>@admin.Eposta</td>
+                <td>@admin.Sifre</td>
+                <td>@admin.Yetki</td>
+                <td><a href="/Admin/AdminSil/@admin.AdminID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Admin/AdminGuncelle/@admin.AdminID" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+
+
+

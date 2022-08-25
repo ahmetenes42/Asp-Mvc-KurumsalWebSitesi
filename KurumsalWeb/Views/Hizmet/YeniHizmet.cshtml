@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "YeniHizmet";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1 style="margin-bottom:20px;" align="center">Yeni Hizmet</h1>
+<script type="text/javascript">
+    CKEDITOR.replace('editor')
+</script>
+@using (Html.BeginForm("YeniHizmet", "Hizmet", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- General Form Elements -->
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Başlık</label>
+        <div class="col-sm-10">
+            <input type="text" name="Baslik" class="form-control">
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Açıklama</label>
+        <div class="col-sm-10">
+            <textarea name="Aciklama" class="ckeditor"></textarea>
+        </div>
+    </div>
+   
+    <div class="row mb-3">
+        <label for="inputNumber" class="col-sm-2 col-form-label">Resim</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="file" name="ResimUrl" accept=".png,.jpg,.jpeg" id="formFile">
+        </div>
+    </div>
+
+    <button  style="margin-top:25px; width:100px;" type="submit" class="btn btn-success ">Ekle</button>
+}
+
+
+

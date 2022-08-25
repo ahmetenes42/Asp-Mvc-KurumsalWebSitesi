@@ -1,0 +1,39 @@
+﻿@using KurumsalWeb.Models.Entity
+@model List<Kimlik>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1 style="margin-bottom:30px; margin-top:10px;" align="center">Site Ayar Sayfası</h1>
+<br />
+<br />
+<!-- Table with hoverable rows -->
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Site Başlık</th>
+            <th scope="col">Anahtar Kelimeler</th>
+            <th scope="col">Site Açıklama</th>
+            <th scope="col">Site Logo</th>
+            <th scope="col">Site Ünvan</th>
+            <th scope="col">Düzenle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var kimlik in Model)
+        {
+        <tr>
+            <th>@kimlik.KimlikID</th>
+            <td>@kimlik.Title</td>
+            <td>@kimlik.Keywords</td>
+            <td>@Html.Raw(kimlik.Description)</td>
+            <td><img src="@kimlik.LogoUrl" /></td>
+            <td>@kimlik.Unvan</td>
+            <td><a href="/Kimlik/Edit/@kimlik.KimlikID" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+<!-- End Table with hoverable rows -->

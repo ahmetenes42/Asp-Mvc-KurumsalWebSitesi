@@ -1,0 +1,80 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<KurumsalWeb.Models.Entity.Blog>
+@{
+    ViewBag.Title = "BlogKategori";
+    Layout = "~/Views/Shared/_SiteLayout.cshtml";
+}
+<main id="main">
+
+    <!-- ======= Blog Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Blog</h2>
+
+                <ol>
+                    <li><a href="/Home/Index">Ana Sayfa</a></li>
+                    <li>Blog</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+                    @foreach (var blog in Model)
+                    {
+                        <article class="entry">
+
+                            <div class="entry-img">
+                                <img src="@blog.ResimUrl" alt="" class="img-fluid">
+                            </div>
+
+                            <h2 class="entry-title">
+                                <a href="/Home/BlogDetay/@blog.BlogID">@blog.Baslik</a>
+                            </h2>
+
+                            <div class="entry-meta">
+                                <ul>
+                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-single.html">John Doe</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-single.html"><time datetime="2020-01-01">Jan 1, 2020</time></a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-single.html">12 Comments</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="entry-content">
+                                <p>
+                                    @Html.Raw(blog.Icerik.Substring(0, 540))...
+                                </p>
+                                <div class="read-more">
+                                    <a href="/Home/BlogDetay/@blog.BlogID">Devamını Oku</a>
+                                </div>
+                            </div>
+
+                        </article><!-- End blog entry -->
+                    }
+
+
+                    <div class="blog-pagination">
+                        @Html.PagedListPager(Model, sayfa => Url.Action("Blog", new { sayfa }), PagedListRenderOptions.Classic)
+                    </div>
+
+                </div><!-- End blog entries list -->
+
+                @{
+                    Html.RenderAction("BlogKategoriPartial", "Home");
+                }
+
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+
+</main><!-- End #main -->

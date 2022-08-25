@@ -1,0 +1,45 @@
+﻿@model IEnumerable<KurumsalWeb.Models.Entity.Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1 style="margin-bottom:20px;" align="center">Blog Listesi</h1>
+<a href="/Blog/YeniBlog" class="btn btn-outline-primary " style="max-width:12%; margin-bottom:25px;">Yeni Blog Ekle</a>
+
+<!-- Table with hoverable rows -->
+<table id="myTable" class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Başlık</th>
+            @*<th scope="col">İçerik</th>*@
+            <th scope="col">Resim</th>
+            <th scope="col">Kategori Adı</th>
+            <th scope="col">Sil</th>
+            <th scope="col">Düzenle</th>
+            <th scope="col">Detay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blog in Model)
+        {
+        <tr>
+            <th>@blog.BlogID</th>
+            <td>@blog.Baslik</td>
+          @*<td>@Html.Raw(blog.Icerik.Substring(0,50))</td>*@
+
+
+            <td> <img style="width:120px;height:70px;" src="@blog.ResimUrl"</td>
+            <td>@blog.Kategori.KategoriAd</td>
+            <td><a href="/Blog/Sil/@blog.BlogID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Blog/BlogEdit/@blog.BlogID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Blog/Guncelle/@blog.BlogID" class="btn btn-outline-dark">Detay</a></td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+

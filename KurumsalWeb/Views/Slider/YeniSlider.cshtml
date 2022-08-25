@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "YeniSlider";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 style="margin-bottom:20px;" align="center">Yeni Blog</h1>
+<script type="text/javascript">
+    CKEDITOR.replace('editor')
+</script>
+@using (Html.BeginForm("YeniSlider", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- General Form Elements -->
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Başlık</label>
+        <div class="col-sm-9">
+            <input type="text" name="SliderBaslik" required placeholder="Slider Başlığı Giriniz" class="form-control">
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <label for="inputText" class="col-sm-2 col-form-label">Açıklama</label>
+        <div class="col-sm-9">
+            <textarea  name="SliderAciklama" class="ckeditor"></textarea>
+        </div>
+    </div>
+
+  
+
+    <button style="margin-top:25px; width:100px;" type="submit" class="btn btn-success ">Ekle</button>
+}
+
+
+
+

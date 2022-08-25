@@ -1,0 +1,26 @@
+﻿@model KurumsalWeb.Models.Entity.Hakkimizda
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1 style="margin-bottom:20px;" align="center">Hakkımızda Güncelle</h1>
+<script type="text/javascript">
+    CKEDITOR.replace('editor')
+</script>
+
+@using (Html.BeginForm("Guncelle", "Hakkimizda", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <label style="font-weight:bold ; margin-bottom:20px;" for="inputText" class="col-sm-2 col-form-label">Hakkımızda Yazısı</label>
+
+    <div class="row mb-3">
+        <div class="col-sm-14">
+            <textarea name="Aciklama" required class="ckeditor">@Model.Aciklama</textarea>
+        </div>
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-success">Güncelle</button>
+}
+

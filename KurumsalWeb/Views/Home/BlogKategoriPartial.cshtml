@@ -1,0 +1,41 @@
+﻿
+@model IEnumerable<KurumsalWeb.Models.Entity.Kategori>
+
+<div class="col-lg-4">
+
+    <div class="sidebar">
+
+        <h3 class="sidebar-title">Ara</h3>
+        <div class="sidebar-item search-form">
+            <form action="">
+                <input type="text">
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div><!-- End sidebar search formn-->
+
+        <h3 class="sidebar-title">Kategoriler</h3>
+        <div class="sidebar-item categories">
+
+            @foreach (var kategori in Model)
+            {
+                if (kategori.Blog.Count > 0)
+                {
+                    <ul>
+                        <li><a href="/Home/BlogKategori/@kategori.KategoriID">@kategori.KategoriAd <span>@kategori.Blog.Count()</span></a></li>
+
+                    </ul>
+                }
+
+            }
+
+        </div><!-- End sidebar categories-->
+
+       @{ 
+           Html.RenderAction("RecentBlog", "Home");
+       }
+
+
+
+    </div><!-- End sidebar -->
+
+</div><!-- End blog sidebar -->

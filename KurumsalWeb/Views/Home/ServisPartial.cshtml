@@ -1,0 +1,16 @@
+﻿
+@model IEnumerable<KurumsalWeb.Models.Entity.Hizmet>
+
+@foreach (var hizmet in Model)
+{
+<div class="col-md-9 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+    <div class="icon-box icon-box-green">
+        <div class="icon"><i class="bx bx-add-to-queue"></i></div>
+        <h4 class="title"><a href="">@hizmet.Baslik</a></h4>
+        <p class="description">@Html.Raw( hizmet.Aciklama)</p>
+    </div>
+</div>
+}
+
+
+
